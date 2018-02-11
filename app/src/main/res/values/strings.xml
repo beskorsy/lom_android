@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">lom_android</string>
     <string name="title_activity_order">OrderActivity</string>
+    <string name="phone_hint">Номер телефона</string>
 </resources>

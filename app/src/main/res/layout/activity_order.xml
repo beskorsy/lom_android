@@ -21,6 +21,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_order"/>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/scroll"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+        <include layout="@layout/content_order"/>
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
