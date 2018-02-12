@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              tools:context="lom.lom_android.MainActivity">
+
+    <!--Вид транспорта-->
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/colorHint"
+              android:text="Вид транспорта"/>
+    <android.support.v7.widget.AppCompatSpinner android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/transportSpinner"/>
+
+    <!--Приёмный пункт-->
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/gap"
+              android:textColor="@color/colorHint"
+              android:text="Приёмный пункт"/>
+    <android.support.v7.widget.AppCompatSpinner android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/pointsSpinner"/>
+
+    <!--Стоимость доставки-->
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/gap"
+                  android:layout_gravity="bottom">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Стоимость доставки"
+                  android:textColor="@color/colorHint"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/deliveryCost"
+                  android:layout_marginLeft="32dp"
+                  android:textSize="32dp"
+                  android:text="0 руб"
+                  android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <!--Стоимость доставки-->
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/gap"
+                  android:layout_gravity="bottom">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Цена закупа за тонну"
+                  android:textColor="@color/colorHint"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/price"
+                  android:layout_marginLeft="32dp"
+                  android:textSize="32dp"
+                  android:text="1000 руб"
+                  android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <!--Объем лома-->
+    <EditText android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/gap"
+              android:id="@+id/weightET"
+              android:hint="Объем лома (тонны)"
+              android:inputType="numberDecimal"/>
+
+    <!--Скидка по карте-->
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="@dimen/gap"
+                  android:layout_gravity="bottom">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Скидка по карте"
+                  android:textColor="@color/colorHint"/>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/discount"
+                  android:layout_marginLeft="32dp"
+                  android:textSize="32dp"
+                  android:text="0%"
+                  android:textColor="@color/black"/>
+    </LinearLayout>
+
+</LinearLayout>
