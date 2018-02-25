@@ -1,10 +1,11 @@
-package lom.lom_android;
+package lom.lom_android.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
+import lom.lom_android.R;
 
 public class OrderActivity extends AppCompatActivity {
 

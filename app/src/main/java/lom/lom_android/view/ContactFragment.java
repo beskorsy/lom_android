@@ -1,4 +1,4 @@
-package lom.lom_android;
+package lom.lom_android.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import lom.lom_android.R;
 
 /**

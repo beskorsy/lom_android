@@ -1,12 +1,11 @@
-package lom.lom_android;
+package lom.lom_android.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatSpinner;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import lom.lom_android.R;
 
 /**
  * A placeholder fragment containing a simple view.
