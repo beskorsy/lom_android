@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        tools:context="lom.lom_android.view.ConfirmActivity">
+
+    <TextView android:id="@+id/confirmMsg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="-330dp"
+              android:keepScreenOn="true"
+              android:textColor="@color/white"
+              android:textStyle="bold"
+              android:textSize="24sp"
+              android:gravity="center"
+              android:text="Заявка отправлена!\nНаши специалисты свяжутся с вами в ближайшее время"/>
+
+    <TextView android:id="@+id/errorMsg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="-330dp"
+              android:keepScreenOn="true"
+              android:textColor="@color/white"
+              android:textStyle="bold"
+              android:textSize="24sp"
+              android:gravity="center"
+              android:visibility="gone"
+              android:text="Ошибка!\nПри отправки заявки произошла ошибка. Наши специалисы уже исправляют ее. Повторити ваш заказ позже"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/retryBtn"
+            android:text="Еще заявка"
+            android:layout_gravity="center"
+            android:layout_marginTop="110dp"
+            android:onClick="onRetryClickBtn"/>
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/closeBtn"
+            android:text="Закрыть"
+            android:layout_gravity="center"
+            android:layout_marginTop="180dp"
+            android:onClick="onCloseClickBtn"/>
+
+</FrameLayout>

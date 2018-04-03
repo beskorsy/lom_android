@@ -8,12 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import lom.lom_android.R;
 import lom.lom_android.service.App;
-import lom.lom_android.service.CustomerModel;
+import lom.lom_android.service.DataModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -46,7 +45,7 @@ public class FullscreenActivity extends Activity {
         errorMsg = findViewById(R.id.errorMsg);
         retryBtn = findViewById(R.id.retryBtn);
 
-        mHideHandler.postDelayed(mHideRunnable, 15000);
+        mHideHandler.postDelayed(mHideRunnable, 2000);
         loadContext();
     }
 
@@ -55,17 +54,20 @@ public class FullscreenActivity extends Activity {
         errorMsg.setVisibility(View.INVISIBLE);
         retryBtn.setVisibility(View.INVISIBLE);
 
-        App.getApi().getCustomer("bash").enqueue(new Callback<List<CustomerModel>>() {
+        App.getApi().getData().enqueue(new Callback<DataModel>() {
             @Override
-            public void onResponse(Call<List<CustomerModel>> call, Response<List<CustomerModel>> response) {
+            public void onResponse(Call<DataModel> call, Response<DataModel> response) {
+
+                App app = (App) getApplication();
+                app.setData(response.body());
+
                 tryToMain();
             }
 
             @Override
-            public void onFailure(Call<List<CustomerModel>> call, Throwable t) {
+            public void onFailure(Call<DataModel> call, Throwable t) {
                 errorMsg.setVisibility(View.VISIBLE);
                 retryBtn.setVisibility(View.VISIBLE);
-                tryToMain();
             }
         });
     }

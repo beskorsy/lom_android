@@ -1,15 +1,26 @@
 package lom.lom_android.view;
 
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import github.chenupt.springindicator.SpringIndicator;
-import github.chenupt.springindicator.viewpager.ScrollerViewPager;
 import lom.lom_android.R;
+import lom.lom_android.service.App;
+import lom.lom_android.service.ResultModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ScrollerViewPager mViewPager;
+    private CustomViewPager mViewPager;
     private SpringIndicator springIndicator;
+    private ResultModel resultModel;
 
     private String[] titles = {"Контакты", "Заказ", "Дополнительно"};
 
@@ -37,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ScrollerViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setCurrentItem(0);
+        App application = (App) getApplication();
+        resultModel = application.getResultModel();
+        mViewPager.setModel(resultModel);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -49,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                View v = getCurrentFocus();
+                if (v instanceof EditText) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    assert imm != null;
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
                 setTitle(titles[position]);
             }
 
@@ -56,11 +78,56 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
+        mViewPager.setPagingEnabled(true);
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         springIndicator = findViewById(R.id.indicator);
         springIndicator.setViewPager(mViewPager);
         setTitle(titles[mViewPager.getCurrentItem()]);
+    }
+
+    public void onClickSubmitBtn(View view) {
+        App.getApi().sendRequest(resultModel.phone,
+                resultModel.loader,
+                resultModel.cutter,
+                resultModel.calculatedInPlace,
+                resultModel.discount.toString(),
+                resultModel.locality.getName(),
+                resultModel.address,
+                resultModel.scrapyard.getName(),
+                String.valueOf(resultModel.distantce),
+                resultModel.transport.getName() + " " + resultModel.transport.getTonn(),
+                resultModel.cost.toString(),
+                resultModel.tonn.toString(),
+                resultModel.data,
+                resultModel.comment).enqueue(new Callback<List<Object>>() {
+            @Override
+            public void onResponse(Call<List<Object>> call, Response<List<Object>> response) {
+
+                if (response.body() != null && response.body().size() > 0) {
+                    resultModel.isRequestSuccsess = true;
+                } else {
+                    resultModel.isRequestSuccsess = false;
+                }
+                Intent intent = new Intent(getBaseContext(), ConfirmActivity.class);
+                startActivity(intent);
+            }
+
+
+            @Override
+            public void onFailure(Call<List<Object>> call, Throwable t) {
+                resultModel.isRequestSuccsess = false;
+                Intent intent = new Intent(getBaseContext(), ConfirmActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public void onClickNextButton(View view) {
+        mViewPager.setCurrentItem(1, true);
     }
 
 

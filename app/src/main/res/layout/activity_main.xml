@@ -11,8 +11,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-        <github.chenupt.springindicator.viewpager.ScrollerViewPager
+        <lom.lom_android.view.CustomViewPager
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

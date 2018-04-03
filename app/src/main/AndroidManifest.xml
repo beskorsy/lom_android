@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="lom.lom_android">
+
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-            android:name="lom.lom_android.service.App"
+            android:name=".service.App"
             android:allowBackup="true"
             android:fullBackupContent="@xml/backup_descriptor"
             android:icon="@mipmap/ic_launcher"
@@ -12,15 +13,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <activity
-                android:name=".view.OrderActivity"
-                android:label="@string/title_activity_order"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
         <activity
                 android:name=".view.MainActivity"
-                android:label="@string/title_activity_main">
+                android:label="@string/title_activity_main"
+                android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
@@ -36,6 +32,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".view.ConfirmActivity"
+                  android:noHistory="true">
         </activity>
     </application>
 

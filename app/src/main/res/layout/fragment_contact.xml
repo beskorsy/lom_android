@@ -17,7 +17,7 @@
               android:inputType="phone"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Для связи менеджера и уведомление о статусе заявки СМС"
+              android:text="Для связи менеджера и уведомление о статусе заявки по СМС"
               android:textColor="@color/colorHint"/>
 
     <!--Населенный пункт-->
@@ -37,6 +37,15 @@
               android:text="Точный адрес доставки"/>
     <EditText android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:maxLines="1"
               android:id="@+id/address"/>
+
+    <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap"
+            android:id="@+id/nextBtn"
+            android:text="Далее"
+            android:layout_gravity="center"
+            android:onClick="onClickNextButton"/>
 
 </LinearLayout>

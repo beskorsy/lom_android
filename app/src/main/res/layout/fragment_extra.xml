@@ -10,36 +10,46 @@
               tools:context="lom.lom_android.view.MainActivity">
 
     <!--Дата-->
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/colorHint"
+              android:text="Желаемая дата вывоза"/>
     <EditText android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/gap"
               android:id="@+id/dateET"
-              android:hint="Желаемая дата вывоза"
+              android:hint=""
               android:inputType="date"/>
 
     <!--Грузчики-->
     <CheckBox android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/gap"
               android:id="@+id/cargo"
               android:text="Грузчики"/>
     <!--Резчики-->
     <CheckBox android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/gap"
               android:id="@+id/cutter"
               android:text="Резчики"/>
 
     <!--Расчет на месте-->
     <CheckBox android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:id="@+id/сalculationOnSpot"
+              android:id="@+id/calculationOnSpot"
+              android:layout_marginTop="@dimen/gap"
               android:text="Расчет на месте"/>
 
     <!--Комментарий-->
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/colorHint"
+              android:layout_marginTop="@dimen/gap"
+              android:text="Комментарий к заявке"/>
     <EditText android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/gap"
-              android:id="@+id/cimment"
-              android:hint="Комментарий к заявки"
+              android:id="@+id/comment"
+              android:hint="Добавте тут любую необходимую информацию"
               android:inputType="textMultiLine"
               android:lines="8"
               android:maxLines="10"
